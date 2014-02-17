@@ -1,6 +1,8 @@
 MaestroWebapp::Application.routes.draw do
-  get "front_pages/home"
-  get "front_pages/help"
+  get "users/new"
+  root 'front_pages#home'
+  match '/help', to: 'front_pages#help', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -6,7 +6,7 @@ describe "Front Pages" do
 
     it "should have the content 'Maestro'" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      visit '/front_pages/home'
+      visit root_path
       expect(page).to have_content('Maestro')
     end
   end
@@ -14,7 +14,7 @@ describe "Front Pages" do
   describe "Help Page" do
 
     it "should have thecontent 'Help'" do
-      visit '/front_pages/help'
+      visit help_path
       expect(page).to have_content('Help')
     end
   end
