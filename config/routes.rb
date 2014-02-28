@@ -1,5 +1,5 @@
 MaestroWebapp::Application.routes.draw do
-  get "users/new"
+  resources :users
   root 'front_pages#home'
   match '/help',   to: 'front_pages#help', via: 'get'
   match '/signup', to: 'users#new',        via: 'get'
