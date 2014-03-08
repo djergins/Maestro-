@@ -12,6 +12,7 @@
   </head>
   <body>
   <div class="container">
+    <%= @user = current_user %>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
@@ -35,7 +36,7 @@
                   <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                   <li class="divider"></li>
                   <li>
-                    <%= link_to "Sign out", signout_path, method: "delete" %>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
                   </li>
                 </ul>
               </li>

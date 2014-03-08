@@ -5,6 +5,8 @@
        <h1>
          <%= gravatar_for @user %>
          <%= @user.name %>
+         <br>
+         <%= @user.institution %>
        </h1>
      </section>
    </aside>
@@ -16,5 +18,9 @@
        Music Libraries
      </h1>
      <!-- TO DO GENERATE LIBRARIES -->
+       <p>
+         <%= link_to "Add Library", '#', class: "btn btn-large btn-primary" %>
+         <%= link_to "Remove Library", '#', class: "btn btn-large btn-primary" %>
+       </p>
    </section>
  </div>
