@@ -17,10 +17,17 @@
      <h1 class="h1">
        Music Libraries
      </h1>
-     <!-- TO DO GENERATE LIBRARIES -->
+     <hr class="center">
+     <div class="span12">
+       <% if @user.libraries.any? %>
+         <h3>Libraries (<%= @user.libraries.count %>)</h3>
+           <ol class="libraries">
+             <%= render @libraries %>
+           </ol>
+         <% end %>
+       </div>
        <p>
-         <%= link_to "Add Library", '#', class: "btn btn-large btn-primary" %>
-         <%= link_to "Remove Library", '#', class: "btn btn-large btn-primary" %>
+         <%= link_to "Add Library", new_library_path , class: "btn btn-large btn-primary" %>
        </p>
    </section>
  </div>

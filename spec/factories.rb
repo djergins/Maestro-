@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
+
+
+  factory :library do
+    name "Example library"
+    user
+  end
 end

@@ -1,0 +1,6 @@
+<li>
+<span class="name"><%=link_to library.name + " | ", library_path %></span>
+
+<%= link_to "Remove Library", {:controller => :libraries, :action => 'destroy', :id => library.id }, 
+             method: :delete, data: { confirm: "You sure?" }, title: library.name %>
+</li>

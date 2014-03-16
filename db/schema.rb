@@ -11,14 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308221920) do
+ActiveRecord::Schema.define(version: 20140316073018) do
 
   create_table "libraries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "total_pieces"
+    t.integer  "user_id"
   end
+
+  create_table "pieces", force: true do |t|
+    t.string   "name"
+    t.string   "composer"
+    t.string   "arranger"
+    t.integer  "library_number"
+    t.string   "key"
+    t.integer  "grade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "library_id"
+  end
+
+  add_index "pieces", ["library_id"], name: "index_pieces_on_library_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -1,4 +1,11 @@
 MaestroWebapp::Application.routes.draw do
+
+  get "pieces/new"
+  get "pieces/create"
+  get "pieces/show"
+  get "pieces/edit"
+  get "pieces/destroy"
+  resources :libraries, only: [:new, :create, :show, :edit, :destroy]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   root 'front_pages#home'
