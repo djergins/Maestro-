@@ -4,7 +4,8 @@ class PiecesController < ApplicationController
   end
 
   def create
-    @piece = current_user.libraries.pieces.build(piece_params)
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.create(piece_params)
     if @piece.save
       flash[:success] = "Piece Created!"
     else
@@ -19,6 +20,9 @@ class PiecesController < ApplicationController
   end
 
   def destroy
+    @piece.destroy
+    flash[:success] = "Piece Deleted!"
+    redirect_to current_user
   end
 
   private 

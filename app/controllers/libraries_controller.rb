@@ -1,8 +1,8 @@
 class LibrariesController < ApplicationController
   before_action :correct_user,   only: :destroy
-
   def new
     @library = Library.new
+    render layout: "application"
   end
 
   def create
@@ -17,6 +17,7 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+    render layout: "libraries"
   end
 
   def destroy
