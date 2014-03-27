@@ -1,8 +1,6 @@
-<h1>Add a Piece</h1>
-
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@piece) do |f| %>
+    <%= form_for([@library, @piece]) do |f| %>
       <%= render 'shared/piece_error_messages' %>
 
       <%= f.label :name %>

@@ -9,7 +9,7 @@ class LibrariesController < ApplicationController
     @library = current_user.libraries.build(library_params)
     if @library.save
       flash[:success] = "Library Created!"
-      redirect_to current_user
+      redirect_to @library
     else
       render 'front_pages/home'
     end

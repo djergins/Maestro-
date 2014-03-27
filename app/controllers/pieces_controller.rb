@@ -1,6 +1,9 @@
 class PiecesController < ApplicationController
+  before_action :set_library
+
   def new
-    @piece = Piece.new
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.new
   end
 
   def create
@@ -8,6 +11,7 @@ class PiecesController < ApplicationController
     @piece = @library.pieces.create(piece_params)
     if @piece.save
       flash[:success] = "Piece Created!"
+      redirect_to 'libraries/show'
     else
       render 'front_pages/home'
     end
@@ -25,7 +29,18 @@ class PiecesController < ApplicationController
     redirect_to current_user
   end
 
+  def new_piece
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private 
+
+    def set_library
+      @library = Library.find(params[:library_id])
+    end
 
     def piece_params
       params.require(:piece).permit(:name, :composer, :arranger, :library_number,

@@ -76,7 +76,7 @@
             <p>Search for piece:</p>
             <input type="text" class="form-control" placeholder="Search...">
           </form>
-          <%= link_to "Add Piece", new_library_piece_path, class: "btn btn-large btn-primary" %>  
+          <%= link_to "Add Piece", new_library_piece_path(@library.id) , class: "btn btn-large btn-primary" %>  
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
