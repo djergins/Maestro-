@@ -17,6 +17,7 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+    @piece = @library.piece_ids
     render layout: "libraries"
   end
 

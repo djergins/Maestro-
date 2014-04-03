@@ -1,6 +1,13 @@
 class PiecesController < ApplicationController
   before_action :set_library
 
+  def index
+    @library = Library.find(params[:library_id])
+    @pieces =  @library.pieces
+    @piece = Piece.new(:library=>@library)
+    render layout: "pieces"
+  end
+
   def new
     @library = Library.find(params[:library_id])
     @piece = @library.pieces.new
@@ -8,33 +15,38 @@ class PiecesController < ApplicationController
 
   def create
     @library = Library.find(params[:library_id])
-    @piece = @library.pieces.create(piece_params)
-    if @piece.save
-      flash[:success] = "Piece Created!"
-      redirect_to 'libraries/show'
-    else
-      render 'front_pages/home'
+    @piece = @library.pieces.new(piece_params)
+    respond_to do |format|
+      if @piece.save
+        format.html { redirect_to @piece , notice: 'Piece was successfully created.' }
+        format.json { render action: 'show', status: :created, location: [@library, @piece] }
+        format.js   { render action: 'show', status: :created, location: [@library, @piece] }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @piece.errors, status: :unprocessable_entity}
+        format.js   { render json: @piece.errors, status: :unprocessable_entity}
+      end
     end
   end
 
   def show
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:id])
+    render layout: "application"
   end
 
   def edit
+    render layout: "application"
   end
 
   def destroy
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:id])
     @piece.destroy
     flash[:success] = "Piece Deleted!"
-    redirect_to current_user
+    redirect_to library_path(@library)
   end
 
-  def new_piece
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
 
   private 
 

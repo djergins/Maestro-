@@ -1,0 +1,67 @@
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Library: <%= @library.name %></h1>
+
+          <div class="row placeholders">
+          </div>
+
+          <h2 class="sub-header">Pieces:</h2>
+          <div class="table-responsive">
+            <table class="table table-striped" id='piece_table'>
+              <thead>
+                <tr>
+                  <th>Name:</th>
+                  <th>Composer:</th>
+                  <th>Arranger:</th>
+                  <th>Key:</th>
+                  <th>Library Number:</th>
+                  <th>Grade:</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+              <% if @pieces.present? %>
+                <% @pieces.each do |piece| %>
+                  <%= render partial: 'pieces/table_row', locals: {piece: piece} %>
+                <% end %>
+              <% else %>
+                <tr>
+                  <td colspan=4> You don't have any pieces yet.</td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+<%# Bootstrap modal markup. @see: http://getbootstrap.com/javascript/#modals %>
+<div class="modal fade" id="new_piece_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create new piece</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'pieces/new_piece', modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+  </body>
+</html>

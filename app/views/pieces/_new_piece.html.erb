@@ -1,27 +1,65 @@
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for([@library, @piece]) do |f| %>
-      <%= render 'shared/piece_error_messages' %>
+<%# Conditionally set remote: true. Also, passing model name as data attribute %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for([@library, @piece], remote: remote, html: {role: :form, 'data-model' => 'piece'}) do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+  <% if @piece.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
 
-      <%= f.label :composer %>
-      <%= f.text_field :composer %>
+      <ul>
+      <% @piece.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <%= f.label :arranger %>
-      <%= f.text_field :arranger %>
-
-      <%= f.label :library_number %>
-      <%= f.text_field :library_number %>
-
-      <%= f.label :key %>
-      <%= f.text_field :key %>
-
-      <%= f.label :grade %>
-      <%= f.text_field :grade %>
-
-      <%= f.submit "Confirm", class: "btn btn-large btn-primary" %>
-    <% end %>
+  <%# Added Bootstrap classes, and help-block container for error messages %>
+  <div class="form-group">
+    <%= f.label :name, class: 'control-label' %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+    <span class="help-block"></span>
   </div>
-</div>
+
+  <%# Added Bootstrap classes, and help-block container for error messages %>
+  <div class="form-group">
+    <%= f.label :composer, class: 'control-label' %><br>
+    <%= f.text_field :composer, class: 'form-control' %>
+    <span class="help-block"></span>
+  </div>
+
+  <%# Added Bootstrap classes, and help-block container for error messages %>
+  <div class="form-group">
+    <%= f.label :arranger, class: 'control-label' %><br>
+    <%= f.text_field :arranger, class: 'form-control' %>
+    <span class="help-block"></span>
+  </div>
+
+  <%# Added Bootstrap classes, and help-block container for error messages %>
+  <div class="form-group">
+    <%= f.label :library_number, class: 'control-label' %><br>
+    <%= f.text_field :library_number, class: 'form-control' %>
+    <span class="help-block"></span>
+  </div>
+
+  <%# Added Bootstrap classes, and help-block container for error messages %>
+  <div class="form-group">
+    <%= f.label :key, class: 'control-label' %><br>
+    <%= f.text_field :key, class: 'form-control' %>
+    <span class="help-block"></span>
+  </div>
+
+  <%# Added Bootstrap classes, and help-block container for error messages %>
+  <div class="form-group">
+    <%= f.label :grade, class: 'control-label' %><br>
+    <%= f.text_field :grade, class: 'form-control' %>
+    <span class="help-block"></span>
+  </div>
+
+  <%# Added Bootstrap classes %>
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-default' %>
+  </div>
+
+<% end %>
