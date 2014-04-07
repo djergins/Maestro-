@@ -6,9 +6,11 @@ gem 'rails', '4.0.2'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
+gem 'simple_form'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem 'paperclip', '4.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
