@@ -5,7 +5,7 @@
   <td><%= piece.library_number %></td>
   <td><%= piece.key %></td>
   <td><%= piece.grade %></td>
-  <td><%= link_to 'Show',library_piece_path(:id => piece.id)  %></td>
+  <td><%= link_to 'Parts',library_piece_parts_path(@library.id, piece)  %></td>
   <td><%= link_to 'Edit', edit_library_piece_path(:id => piece.id) %></td>
   <td><%= link_to 'Destroy',library_piece_path(:id => piece.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
