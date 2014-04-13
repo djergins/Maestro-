@@ -1,2 +1,21 @@
-<h1>Pieces#show</h1>
-<p>Find me in app/views/pieces/show.html.erb</p>
+<title><% provide(:title, @piece.name) %></title>
+<h1><%= @piece.name %></h1>
+
+<div class="row">
+  <section>
+    <h1 class="h1">Parts</h1>
+    <hr class="center">
+    <div class="span12">
+      <% if @piece.parts.any? %>
+        <h3>Parts (<%= @piece.parts.count %>)</h3>
+        <ol class="libraries">
+          <%= render @parts %>
+        </ol>
+      <% end %>
+    </div>
+    <p>
+    <%= link_to "Add Part", new_library_piece_part_path(@library.id, @piece.id) , class: "btn btn-large btn-primary" %>
+    </p>
+  </section>
+</div>
+

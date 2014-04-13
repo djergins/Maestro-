@@ -9,9 +9,22 @@ class LibrariesController < ApplicationController
     @library = current_user.libraries.build(library_params)
     if @library.save
       flash[:success] = "Library Created!"
-      redirect_to @library
+      redirect_to library_pieces_path(@library)
     else
       render 'front_pages/home'
+    end
+  end
+
+  def edit
+    @library = Library.find(params[:id])
+    render layout: "application"
+  end
+
+  def update
+    @library = Library.find(params[:id])
+    if @library.update_attributes(library_params)
+      flash[:success] = "Library updated"
+      redirect_to current_user
     end
   end
 

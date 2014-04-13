@@ -1,7 +1,8 @@
 MaestroWebapp::Application.routes.draw do
-   
   resources :libraries do
-    resources :pieces
+    resources :pieces do
+      resources :parts 
+    end
   end
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

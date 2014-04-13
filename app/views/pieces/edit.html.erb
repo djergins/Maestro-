@@ -1,2 +1,29 @@
-<h1>Pieces#edit</h1>
-<p>Find me in app/views/pieces/edit.html.erb</p>
+<% provide(:title, "Edit Piece") %>
+<h1>Update Piece</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for([@library, @piece]) do |f| %>
+      <%= render 'shared/piece_error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :composer %>
+      <%= f.text_field :composer %>
+
+      <%= f.label :arranger %>
+      <%= f.text_field :arranger %>
+
+      <%= f.label :library_number %>
+      <%= f.text_field :library_number %>
+
+      <%= f.label :key %>
+      <%= f.text_field :key %>
+
+      <%= f.label :grade %>
+      <%= f.text_field :grade %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+

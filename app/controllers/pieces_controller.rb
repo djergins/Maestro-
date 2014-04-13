@@ -32,19 +32,30 @@ class PiecesController < ApplicationController
   def show
     @library = Library.find(params[:library_id])
     @piece = @library.pieces.find(params[:id])
+    @parts = @piece.parts(page: params[:page])
     render layout: "application"
   end
 
   def edit
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:id])
     render layout: "application"
+  end
+
+  def update
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:id])
+    if @piece.update_attributes(piece_params)
+      flash[:success] = "Piece updated"
+      redirect_to library_pieces_path(@library)
+    end
   end
 
   def destroy
     @library = Library.find(params[:library_id])
-    @piece = @library.pieces.find(params[:id])
-    @piece.destroy
+    @piece = @library.pieces.find(params[:id]).destroy
     flash[:success] = "Piece Deleted!"
-    redirect_to library_path(@library)
+    redirect_to library_pieces_path(@library)
   end
 
 
