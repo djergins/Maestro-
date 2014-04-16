@@ -1,17 +1,19 @@
 <% provide(:title, "Add a Part") %>
 <h1>Add a Part</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for [@library, @piece, @part], :html => {:multipart => true } do |f| %>
+  <div class="col-lg-offset-3 col-sm-6 col-md-6">
+    <%= form_for [@library, @piece, @part], :html => {:multipart => true, :class => "form-horizontal center" } do |f| %>
       <%= f.hidden_field :piece_id %>
-      <p>
-        <%= f.label :name %><br />
-        <%= f.text_field :name %>
-      </p>
-      <p>
-        <%= f.file_field :piece %>
+      <div class="form-group">
+        <%= f.label :name, class: "col-md-4 control-label" %><br />
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-8">
+        <%= f.file_field :piece, class: "form-control" %>
       <p><%= f.submit %></p>
     <% end %>
   </div>
-</div>
