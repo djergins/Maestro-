@@ -19,7 +19,8 @@ class PartsController < ApplicationController
     @parts = @piece.parts
     @part = @piece.parts.new(part_params)
     if @part.save
-      redirect_to library_piece_parts_path(@library.id, @piece.id), notice: 'Part was successfully created.'
+      flash[:success] = "Part Created!"
+      redirect_to library_piece_parts_path(@library.id, @piece.id)
     else
       render action: 'new'
     end
@@ -32,6 +33,11 @@ class PartsController < ApplicationController
   end
 
   def destroy
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:piece_id])
+    @part = @piece.parts.find(params[:id]).destroy
+    flash[:success] = "Piece Deleted!"
+    redirect_to library_piece_parts_path(@library.id, @piece.id)
   end
 
   def show
