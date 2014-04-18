@@ -1,9 +1,4 @@
 <h1><%= @piece.name %></h1>
-<% if !flash[:notice].blank? %>
-    <div class="alert alert-info">
-    <%= flash[:notice] %>
-    </div>
-    <% end %>
     <br />
     <%= link_to "Add Part", new_library_piece_part_path(@library.id, @piece.id), class: "btn btn-primary" %>
     <br />
