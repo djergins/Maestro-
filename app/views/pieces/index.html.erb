@@ -26,10 +26,6 @@
                 <% @pieces.each do |piece| %>
                   <%= render partial: 'pieces/table_row', locals: {piece: piece} %>
                 <% end %>
-              <% else %>
-                <tr>
-                  <td colspan=4> You don't have any pieces yet.</td>
-                </tr>
               <% end %>
               </tbody>
             </table>
