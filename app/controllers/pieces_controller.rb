@@ -3,7 +3,7 @@ class PiecesController < ApplicationController
 
   def index
     @library = Library.find(params[:library_id])
-    @pieces =  @library.pieces
+    @pieces =  @library.pieces.search(params[:search])
     @piece = Piece.new(:library=>@library)
     render layout: "pieces"
   end
@@ -67,6 +67,6 @@ class PiecesController < ApplicationController
 
     def piece_params
       params.require(:piece).permit(:name, :composer, :arranger, :library_number,
-                                    :key, :grade)
+                                    :key, :grade) if params[:piece]
     end
 end

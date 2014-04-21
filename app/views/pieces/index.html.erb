@@ -1,4 +1,21 @@
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <div "col-sm-offset-2">
+        <br>
+        <p>Search for a piece:</p>
+        <%= form_tag library_pieces_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search",:class => "btn btn-md btn-primary", :name => nil %>
+          </p>
+        <% end %>
+        <%= link_to "Add Piece", '#new_piece_modal', 'data-toggle' => 'modal' , class: "btn btn-md btn-primary" %>
+       </div>
+     </div>
+   </div>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Library: <%= @library.name %></h1>
 
           <div class="row placeholders">
