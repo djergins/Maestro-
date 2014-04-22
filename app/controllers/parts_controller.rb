@@ -23,7 +23,7 @@ class PartsController < ApplicationController
       redirect_to library_piece_parts_path(@library.id, @piece.id)
     else
       flash[:alert] = "Part name can't be blank"
-      render action: 'new'
+      redirect_to new_library_piece_part_path
     end
   end
 
