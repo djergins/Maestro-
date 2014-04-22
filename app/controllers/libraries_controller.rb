@@ -11,7 +11,8 @@ class LibrariesController < ApplicationController
       flash[:success] = "Library Created!"
       redirect_to library_pieces_path(@library)
     else
-      render 'front_pages/home'
+      flash[:alert] = "Invalid entry for library name."
+      redirect_to new_library_path
     end
   end
 
@@ -25,6 +26,9 @@ class LibrariesController < ApplicationController
     if @library.update_attributes(library_params)
       flash[:success] = "Library updated"
       redirect_to current_user
+    else
+      flash[:alert] = "Invalid entry for library name."
+      redirect_to new_library_path
     end
   end
 

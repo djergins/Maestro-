@@ -48,6 +48,9 @@ class PiecesController < ApplicationController
     if @piece.update_attributes(piece_params)
       flash[:success] = "Piece updated"
       redirect_to library_pieces_path(@library)
+    else
+      flash[:alert] = "Invalid entry for piece."
+      redirect_to edit_library_piece_path
     end
   end
 
