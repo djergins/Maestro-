@@ -2,8 +2,8 @@
   <td><%= piece.name %></td>
   <td><%= piece.composer %></td>
   <td><%= piece.arranger %></td>
-  <td><%= piece.library_number %></td>
   <td><%= piece.key %></td>
+  <td><%= piece.library_number %></td>
   <td><%= piece.grade %></td>
   <td><%= link_to 'Parts',library_piece_parts_path(@library.id, piece)  %></td>
   <td><%= link_to 'Edit', edit_library_piece_path(:id => piece.id) %></td>
