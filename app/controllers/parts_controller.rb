@@ -37,7 +37,7 @@ class PartsController < ApplicationController
     @library = Library.find(params[:library_id])
     @piece = @library.pieces.find(params[:piece_id])
     @part = @piece.parts.find(params[:id]).destroy
-    flash[:success] = "Piece Deleted!"
+    flash[:success] = "Part Deleted!"
     redirect_to library_piece_parts_path(@library.id, @piece.id)
   end
 
