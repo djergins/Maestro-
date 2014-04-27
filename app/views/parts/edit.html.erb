@@ -1,2 +1,23 @@
-<h1>Part#edit</h1>
-<p>Find me in app/views/part/edit.html.erb</p>
+<body class="parts">
+<% provide(:title, "Add a Part") %>
+<h1>Edit a Part</h1>
+
+  <div class="col-lg-offset-3 col-sm-6 col-md-6">
+    <%= form_for [@library, @piece, @part], :html => {:multipart => true, :class => "form-horizontal center" } do |f| %>
+      <div class="form-group">
+        <p><I>* Denotes a required field.</I></p>
+        <%= f.label :name, "Name*", class: "col-md-1 control-label" %><br />
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <%= f.hidden_field :piece_id %>
+      <div class="form-group">
+        <div class="col-md-8 col-sm-offset-1">
+          <%= f.file_field :piece, class: "form-control" %>
+        </div>
+      </div>
+      <p><%= f.submit "Edit part", class: "btn btn-lg btn-primary col-lg-offset-1 col-md-3" %></p>
+    <% end %>
+  </div>
+</body>

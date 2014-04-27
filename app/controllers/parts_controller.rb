@@ -28,9 +28,22 @@ class PartsController < ApplicationController
   end
 
   def edit
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:piece_id])
+    @part = @piece.parts.find(params[:id])
   end
 
   def update
+    @library = Library.find(params[:library_id])
+    @piece = @library.pieces.find(params[:piece_id])
+    @part = @piece.parts.find(params[:id])
+    if @part.update_attributes(part_params)
+      flash[:success] = "Part updated"
+      redirect_to library_piece_parts_path(@library.id, @piece.id)
+    else
+      flash[:alert] = "Part name can't be blank"
+      redirect_to edit_library_piece_part_path
+    end
   end
 
   def destroy

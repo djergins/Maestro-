@@ -16,6 +16,7 @@
     <tr>
     <td><%= part.name %></td>
     <td><%= link_to "Download part", part.piece_url %></td>
+    <td><%= link_to "Edit", edit_library_piece_part_path(:id => part.id), class: "btn btn-md btn-primary col-md-4" %></td>
     <td><%= button_to "Delete", library_piece_part_path(:id => part.id), method: :delete, class: "btn btn-danger col-md-4", confirm: "Are you sure that you wish to delete #{part.name}?" %></td>
     </tr>
     <% end %>
